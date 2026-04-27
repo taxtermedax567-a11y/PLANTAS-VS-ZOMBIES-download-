@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Descargas PvZ - Selección de Versión</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link <link rel="icon" type="image/png" href="personaje.png">
     <style>
         /* Importando una fuente temática similar a la de PvZ */
         @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter:wght@400;700&display=swap');
@@ -14,6 +14,7 @@
             --accent-purple: #8b5cf6;
             --dark-bg: #0f172a;
             --card-bg: #1e293b;
+            --android-green: #3DDC84;
         }
 
         body {
@@ -116,6 +117,43 @@
             color: white;
         }
 
+        .platform-selector {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(30, 41, 59, 0.8);
+            padding: 0.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            backdrop-filter: blur(10px);
+            z-index: 50;
+        }
+
+        .platform-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #94a3b8;
+        }
+
+        .platform-btn.active[data-platform="pc"] {
+            background: var(--accent-purple);
+            color: white;
+        }
+
+        .platform-btn.active[data-platform="android"] {
+            background: var(--android-green);
+            color: #0f172a;
+        }
+
         .bg-glow {
             position: fixed;
             top: 50%;
@@ -152,72 +190,27 @@
     <div class="bg-glow"></div>
     <div id="toast" class="toast">¡Enlace copiado al portapapeles!</div>
 
+    <!-- Selector de Plataforma -->
+    <div class="platform-selector">
+        <button class="platform-btn active" data-platform="pc" onclick="setPlatform('pc')">
+            <i class="fas fa-desktop"></i> PC
+        </button>
+        <button class="platform-btn" data-platform="android" onclick="setPlatform('android')">
+            <i class="fab fa-android"></i> Android
+        </button>
+    </div>
+
     <!-- Encabezado -->
     <header class="pt-12 pb-6 px-4 text-center">
         <h1 class="text-6xl text-white mb-2 tracking-widest uppercase">Descargas PvZ</h1>
-        <p class="text-slate-400 font-medium uppercase tracking-tighter">Galería y Enlaces Directos</p>
+        <p id="platform-subtitle" class="text-slate-400 font-medium uppercase tracking-tighter">Galería y Enlaces para PC</p>
     </header>
 
     <!-- Contenido Principal -->
     <main class="flex-grow flex items-center">
         <div class="w-full">
-            <div class="horizontal-scroll px-8 md:px-[10%]">
-                
-                <!-- PvZ 1 Clásico -->
-                <article class="card">
-                    <img src="https://img.utdstc.com/screen/1bd/15c/1bd15c64ce0f21b51c6fa8f392e498ba300eaaee453a219e7327f6eff817dfcd:600" 
-                         alt="" 
-                         class="game-image">
-                    <div>
-                        <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">Edición GOTY</span>
-                        <h2 class="text-4xl my-2">PvZ 1 Original</h2>
-                    </div>
-                    
-                    <div class="flex flex-col mt-4">
-                        <!-- Enlace actualizado a MediaFire (Gamdie version) -->
-                        <a href="https://www.mediafire.com/file/atn8a01fegdotau/Plants.VS.Zombies.GOTY.Edition.Gamdie.com.zip/file" target="_blank" class="btn-download">Descargar en MediaFire</a>
-                        <button onclick="copyLink('https://www.mediafire.com/file/atn8a01fegdotau/Plants.VS.Zombies.GOTY.Edition.Gamdie.com.zip/file')" class="btn-copy">
-                            <i class="far fa-copy mr-2"></i>Copiar Link
-                        </button>
-                    </div>
-                </article>
-
-                <!-- PvZ Fusion -->
-                <article class="card">
-                    <img src="https://static.playhop.com/vptn/6bbb5_15056847_f822e/4eb16f870/2a00000199badff5_8ce3177/9f35595d86b641b19d3b_94c63b/564x318_1" 
-                         alt="" 
-                         class="game-image">
-                    <div>
-                        <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">Versión 3.0.1</span>
-                        <h2 class="text-4xl my-2">PvZ Fusion</h2>
-                    </div>
-
-                    <div class="flex flex-col mt-4">
-                        <a href="https://www.mediafire.com/file/rbmgvhluccz4zge/Pvz_Fusion_3.0.1_PC.zip/file" target="_blank" class="btn-download">Descargar MediaFire</a>
-                        <button onclick="copyLink('https://www.mediafire.com/file/rbmgvhluccz4zge/Pvz_Fusion_3.0.1_PC.zip/file')" class="btn-copy">
-                            <i class="far fa-copy mr-2"></i>Copiar Link
-                        </button>
-                    </div>
-                </article>
-
-                <!-- PvZ Replanted -->
-                <article class="card">
-                    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3654560/c91b72b9b68246a609e8e8eae208cff42d24ebaa/ss_c91b72b9b68246a609e8e8eae208cff42d24ebaa.1920x1080.jpg?t=1763401327" 
-                         alt="" 
-                         class="game-image">
-                    <div>
-                        <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">Descarga Gratuita</span>
-                        <h2 class="text-4xl my-2">PvZ Replanted</h2>
-                    </div>
-
-                    <div class="flex flex-col mt-4">
-                        <a href="https://filecr.com/pc-games/plants-vs-zombies-replanted-free-download-0024/?id=548250817000" target="_blank" class="btn-download">Descargar FileCR</a>
-                        <button onclick="copyLink('https://filecr.com/pc-games/plants-vs-zombies-replanted-free-download-0024/?id=548250817000')" class="btn-copy">
-                            <i class="far fa-copy mr-2"></i>Copiar Link
-                        </button>
-                    </div>
-                </article>
-
+            <div id="game-container" class="horizontal-scroll px-8 md:px-[10%]">
+                <!-- El contenido se genera dinámicamente mediante JS -->
             </div>
             
             <div class="text-center mt-6 text-slate-500 animate-pulse text-sm">
@@ -228,10 +221,94 @@
 
     <!-- Pie de página -->
     <footer class="p-8 text-center text-slate-600 text-xs">
-        <p>&copy; 2024 PvZ Downloader | Enlaces actualizados</p>
+        <p>&copy; 2024 PvZ Downloader | Enlaces actualizados por plataforma</p>
     </footer>
 
     <script>
+        const gameData = {
+            pc: [
+                {
+                    title: "PvZ 1 Original",
+                    badge: "Edición GOTY",
+                    image: "https://img.utdstc.com/screen/1bd/15c/1bd15c64ce0f21b51c6fa8f392e498ba300eaaee453a219e7327f6eff817dfcd:600",
+                    downloadText: "Descargar en MediaFire",
+                    url: "https://www.mediafire.com/file/atn8a01fegdotau/Plants.VS.Zombies.GOTY.Edition.Gamdie.com.zip/file"
+                },
+                {
+                    title: "PvZ Fusion",
+                    badge: "Versión 3.0.1",
+                    image: "https://static.playhop.com/vptn/6bbb5_15056847_f822e/4eb16f870/2a00000199badff5_8ce3177/9f35595d86b641b19d3b_94c63b/564x318_1",
+                    downloadText: "Descargar MediaFire",
+                    url: "https://www.mediafire.com/file/rbmgvhluccz4zge/Pvz_Fusion_3.0.1_PC.zip/file"
+                },
+                {
+                    title: "PvZ Replanted",
+                    badge: "Descarga Gratuita",
+                    image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3654560/c91b72b9b68246a609e8e8eae208cff42d24ebaa/ss_c91b72b9b68246a609e8e8eae208cff42d24ebaa.1920x1080.jpg?t=1763401327",
+                    downloadText: "Descargar FileCR",
+                    url: "https://filecr.com/pc-games/plants-vs-zombies-replanted-free-download-0024/?id=548250817000"
+                }
+            ],
+            android: [
+                {
+                    title: "PvZ 1 Mobile",
+                    badge: "Mod APK",
+                    image: "https://img.utdstc.com/screen/1bd/15c/1bd15c64ce0f21b51c6fa8f392e498ba300eaaee453a219e7327f6eff817dfcd:600",
+                    downloadText: "Descargar FileCR (Mod)",
+                    url: "https://filecr.com/android-games/download-plants-vs-zombies-mod-apk/"
+                },
+                {
+                    title: "PvZ 2 Mobile",
+                    badge: "Mod APK",
+                    // Imagen actualizada según solicitud del usuario
+                    image: "https://imag.malavida.com/mvimgbig/download-fs/pvz-2-reflourished-40395-5.jpg",
+                    downloadText: "Descargar FileCR (Mod)",
+                    url: "https://filecr.com/android-games/download-plants-vs-zombies-2-mod-apk/"
+                },
+                {
+                    title: "PvZ Fusion Mobile",
+                    badge: "APK v2.8.2 ESP",
+                    image: "https://static.playhop.com/vptn/6bbb5_15056847_f822e/4eb16f870/2a00000199badff5_8ce3177/9f35595d86b641b19d3b_94c63b/564x318_1",
+                    downloadText: "Descargar MediaFire (APK)",
+                    url: "https://www.mediafire.com/file/6s746g6ndxfx662/PVZ_FUSI%25C3%2593N_2.8.2_ESPA%25C3%2591OL_by_TheDrawal.apk/file"
+                }
+            ]
+        };
+
+        function setPlatform(platform) {
+            // Actualizar botones del selector
+            document.querySelectorAll('.platform-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.platform-btn[data-platform="${platform}"]`).classList.add('active');
+
+            // Actualizar subtítulo
+            document.getElementById('platform-subtitle').innerText = `Galería y Enlaces para ${platform.toUpperCase()}`;
+
+            // Generar tarjetas
+            const container = document.getElementById('game-container');
+            container.innerHTML = '';
+
+            gameData[platform].forEach(game => {
+                const card = document.createElement('article');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="${game.image}" alt="" class="game-image">
+                    <div>
+                        <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">${game.badge}</span>
+                        <h2 class="text-4xl my-2">${game.title}</h2>
+                    </div>
+                    <div class="flex flex-col mt-4">
+                        <a href="${game.url}" target="_blank" class="btn-download">${game.downloadText}</a>
+                        <button onclick="copyLink('${game.url}')" class="btn-copy">
+                            <i class="far fa-copy mr-2"></i>Copiar Link
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
         function copyLink(text) {
             const tempInput = document.createElement('input');
             tempInput.value = text;
@@ -246,6 +323,9 @@
                 toast.classList.remove('show');
             }, 2000);
         }
+
+        // Inicializar con PC por defecto
+        setPlatform('pc');
     </script>
 </body>
-</html>
+</html
