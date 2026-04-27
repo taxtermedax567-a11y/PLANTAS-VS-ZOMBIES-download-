@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargas PvZ - Selección de Versión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Importando una fuente temática similar a la de PvZ */
+        @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter:wght@400;700&display=swap');
+
+        :root {
+            --accent-purple: #8b5cf6;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Aplicando la fuente temática solo a los títulos */
+        h1, h2 {
+            font-family: 'Luckiest Guy', cursive;
+            letter-spacing: 2px;
+            -webkit-text-stroke: 1px rgba(0,0,0,0.5);
+        }
+
+        .horizontal-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 2rem;
+            padding: 2rem 1rem;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-purple) transparent;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar-thumb {
+            background-color: var(--accent-purple);
+            border-radius: 10px;
+        }
+
+        .card {
+            min-width: 350px;
+            max-width: 350px;
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 1.5rem;
+            scroll-snap-align: center;
+            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            border-color: var(--accent-purple);
+            transform: translateY(-10px);
+            background: #273549;
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
+        }
+
+        .game-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 1.25rem;
+            background-color: #000;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-download {
+            background: var(--accent-purple);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            font-weight: bold;
+            text-align: center;
+            transition: opacity 0.2s;
+            margin-top: auto;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .btn-copy {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent-purple);
+            border: 1px solid var(--accent-purple);
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .btn-copy:hover {
+            background: var(--accent-purple);
+            color: white;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-purple);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            transform: translateY(100px);
+            transition: transform 0.3s ease-out;
+            z-index: 100;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div class="bg-glow"></div>
+    <div id="toast" class="toast">¡Enlace copiado al portapapeles!</div>
+
+    <!-- Header -->
+    <header class="pt-12 pb-6 px-4 text-center">
+        <h1 class="text-6xl text-white mb-2 tracking-widest uppercase">Descargas PvZ</h1>
+        <p class="text-slate-400 font-medium uppercase tracking-tighter">Galería y Enlaces Directos</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center">
+        <div class="w-full">
+            <div class="horizontal-scroll px-8 md:px-[10%]">
+                
+                <!-- PvZ 1 Classic -->
+                <article class="card">
+                    <img src="https://img.utdstc.com/screen/1bd/15c/1bd15c64ce0f21b51c6fa8f392e498ba300eaaee453a219e7327f6eff817dfcd:600" 
+                         alt="" 
+                         class="game-image">
+                    <div>
+                        <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">GOTY Edition</span>
+                        <h2 class="text-4xl my-2">PvZ 1 Original</h2>
+                    </div>
+                    
+                    <div class="flex flex-col mt-4">
+                        <a href="https://gamdie.com/plants-vs-zombies-goty-edition/" target="_blank" class="btn-download">Ir a Descarga</a>
+                        <button onclick="copyLink('https://gamdie.com/plants-vs-zombies-goty-edition/')" class="btn-copy">
+                            <i class="far fa-copy mr-2"></i>Copiar Link
+                        </button>
+                    </div>
+                </article>
+
+                <!-- PvZ Fusion -->
+                <article class="card">
+                    <img src="https://static.playhop.com/vptn/6bbb5_15056847_f822e/4eb16f870/2a00000199badff5_8ce3177/9f35595d86b641b19d3b_94c63b/564x318_1" 
+                         alt="" 
+                         class="game-image">
+                    <div>
+                        <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">Versión 3.0.1</span>
+                        <h2 class="text-4xl my-2">PvZ Fusion</h2>
+                    </div>
+
+                    <div class="flex flex-col mt-4">
+                        <a href="https://www.mediafire.com/file/rbmgvhluccz4zge/Pvz_Fusion_3.0.1_PC.zip/file" target="_blank" class="btn-download">Descargar MediaFire</a>
+                        <button onclick="copyLink('https://www.mediafire.com/file/rbmgvhluccz4zge/Pvz_Fusion_3.0.1_PC.zip/file')" class="btn-copy">
+                            <i class="far fa-copy mr-2"></i>Copiar Link
+                        </button>
+                    </div>
+                </article>
+
+                <!-- PvZ Replanted -->
+                <article class="card">
+                    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3654560/c91b72b9b68246a609e8e8eae208cff42d24ebaa/ss_c91b72b9b68246a609e8e8eae208cff42d24ebaa.1920x1080.jpg?t=1763401327" 
+                         alt="" 
+                         class="game-image">
+                    <div>
+                        <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">Free Download</span>
+                        <h2 class="text-4xl my-2">PvZ Replanted</h2>
+                    </div>
+
+                    <div class="flex flex-col mt-4">
+                        <a href="https://filecr.com/pc-games/plants-vs-zombies-replanted-free-download-0024/?id=548250817000" target="_blank" class="btn-download">Descargar FileCR</a>
+                        <button onclick="copyLink('https://filecr.com/pc-games/plants-vs-zombies-replanted-free-download-0024/?id=548250817000')" class="btn-copy">
+                            <i class="far fa-copy mr-2"></i>Copiar Link
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+            
+            <div class="text-center mt-6 text-slate-500 animate-pulse text-sm">
+                <i class="fas fa-chevron-left mr-2"></i> Desliza para navegar <i class="fas fa-chevron-right ml-2"></i>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="p-8 text-center text-slate-600 text-xs">
+        <p>&copy; 2024 PvZ Downloader | Tipografía temática aplicada a títulos</p>
+    </footer>
+
+    <script>
+        function copyLink(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
