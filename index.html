@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Descargas PvZ - Selección de Versión</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         /* Importando una fuente temática similar a la de PvZ */
         @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter:wght@400;700&display=swap');
@@ -91,6 +91,11 @@
             margin-top: auto;
             text-transform: uppercase;
             font-size: 0.9rem;
+            display: block;
+        }
+
+        .btn-download:hover {
+            opacity: 0.9;
         }
 
         .btn-copy {
@@ -147,30 +152,31 @@
     <div class="bg-glow"></div>
     <div id="toast" class="toast">¡Enlace copiado al portapapeles!</div>
 
-    <!-- Header -->
+    <!-- Encabezado -->
     <header class="pt-12 pb-6 px-4 text-center">
         <h1 class="text-6xl text-white mb-2 tracking-widest uppercase">Descargas PvZ</h1>
         <p class="text-slate-400 font-medium uppercase tracking-tighter">Galería y Enlaces Directos</p>
     </header>
 
-    <!-- Main Content -->
+    <!-- Contenido Principal -->
     <main class="flex-grow flex items-center">
         <div class="w-full">
             <div class="horizontal-scroll px-8 md:px-[10%]">
                 
-                <!-- PvZ 1 Classic -->
+                <!-- PvZ 1 Clásico -->
                 <article class="card">
                     <img src="https://img.utdstc.com/screen/1bd/15c/1bd15c64ce0f21b51c6fa8f392e498ba300eaaee453a219e7327f6eff817dfcd:600" 
                          alt="" 
                          class="game-image">
                     <div>
-                        <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">GOTY Edition</span>
+                        <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">Edición GOTY</span>
                         <h2 class="text-4xl my-2">PvZ 1 Original</h2>
                     </div>
                     
                     <div class="flex flex-col mt-4">
-                        <a href="https://gamdie.com/plants-vs-zombies-goty-edition/" target="_blank" class="btn-download">Ir a Descarga</a>
-                        <button onclick="copyLink('https://gamdie.com/plants-vs-zombies-goty-edition/')" class="btn-copy">
+                        <!-- Enlace actualizado a MediaFire (Gamdie version) -->
+                        <a href="https://www.mediafire.com/file/atn8a01fegdotau/Plants.VS.Zombies.GOTY.Edition.Gamdie.com.zip/file" target="_blank" class="btn-download">Descargar en MediaFire</a>
+                        <button onclick="copyLink('https://www.mediafire.com/file/atn8a01fegdotau/Plants.VS.Zombies.GOTY.Edition.Gamdie.com.zip/file')" class="btn-copy">
                             <i class="far fa-copy mr-2"></i>Copiar Link
                         </button>
                     </div>
@@ -200,7 +206,7 @@
                          alt="" 
                          class="game-image">
                     <div>
-                        <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">Free Download</span>
+                        <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">Descarga Gratuita</span>
                         <h2 class="text-4xl my-2">PvZ Replanted</h2>
                     </div>
 
@@ -220,9 +226,9 @@
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Pie de página -->
     <footer class="p-8 text-center text-slate-600 text-xs">
-        <p>&copy; 2024 PvZ Downloader | Tipografía temática aplicada a títulos</p>
+        <p>&copy; 2024 PvZ Downloader | Enlaces actualizados</p>
     </footer>
 
     <script>
